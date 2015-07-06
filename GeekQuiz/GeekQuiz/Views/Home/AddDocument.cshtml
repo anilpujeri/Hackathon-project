@@ -1,0 +1,70 @@
+﻿@{
+    ViewBag.Title = "Play";
+}
+
+<div id="bodyContainer" ng-app="QuizApp">
+    <section id="content">
+        <div>
+            <div class="editor-row row-fluid">
+
+                <div>
+                    <div ng-controller="QuizCtrl" ng-init="">
+
+                        <div class="search">
+                        </div>
+
+                        <div class="artistlist">
+                            <div class="info">
+                                <h2>Choose File :</h2>
+                                <input type="file" name="files" id="files" ng-model="imagePath" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <h2>Document Type :</h2>
+                                <br />
+                                <input type="text" name="documentType" ng-model="documentType" id="documentType" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <br />
+                                <h2>Document No# :</h2>
+                                <br />
+                                <input type="text" name="documentNo" ng-model="documentNo" id="documentNo" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <br />
+                                <h2>First Name :</h2>
+                                <br />
+                                <input type="text" name="firstName" ng-model="firstName" id="firstName" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <br />
+                                <h2>Last Name :</h2>
+                                <br />
+                                <input type="text" name="lastName" ng-model="lastName" id="lastName" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <br />
+                                <h2>Valid From :</h2>
+                                <br />
+                                <input type="text" name="validFrom" ng-model="validFrom" id="validFrom" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <br />
+                                <h2>Valid Till :</h2>
+                                <br />
+                                <input type="text" name="validTill" ng-model="validTill" id="validTill" style="width: 60%; margin-left: 20%;" />
+                                <br />
+                                <br />
+                                <button class="btn btn-info btn-lg next option" ng-click="sendAnswer(documentType, documentNo, firstName, lastName, validFrom, validTill, imagePath )" ng-disabled="working" style="width: 30%; margin-left: 35%;">Add</button>
+                                <br />
+                                <br />
+                                <a href="Index"><button class="btn btn-info btn-lg next option"  ng-disabled="working" style="width: 30%; margin-left: 35%;">Cancel</button></a>
+                                <br />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/app/quiz-controller.js")
+}

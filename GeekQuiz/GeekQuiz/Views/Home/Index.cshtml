@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Play";
+}
+
+<div id="bodyContainer" ng-app="QuizApp">
+    <section id="content">
+        <div>
+            <div>
+                <div ng-controller="QuizCtrl" ng-init="nextQuestion()">
+
+                    <div class="search">
+                        <h1 style="text-align: center">Documents Directory</h1>
+
+                        <div class="AddNew" ng-animate="'animate'">
+                            <a href="AddDocument" ng-click="sendAnswer(Documents.indexOf(item))" style="text-align: center">
+                                <h2>Add New Document</h2>
+                            </a>
+                        </div>
+                        <br />
+                        <input ng-model="query" placeholder="Search for Documents" autofocus>
+
+
+                        <label class="formgroup">
+                            Sort by:
+     
+                            <select ng-model="documentOrder">
+                                <option value="documentType">Document</option>
+                                <option value="validTill">ValidTill</option>
+                            </select>
+                        </label>
+
+                        <label class="formgroup">
+                            <input type="radio" ng-model="direction" name="direction" checked>
+                            ascending
+    
+                        </label>
+                        <label class="formgroup">
+                            <input type="radio" ng-model="direction" name="direction" value="reverse">
+                            descending
+   
+                        </label>
+
+                    </div>
+                    <ul class="artistlist">
+                        <li ng-animate="'animate'" class="artist cf" ng-repeat="item in Documents | filter: query | orderBy: documentOrder:direction">
+
+                            <img ng-src="~/Documents/document_image.jpg" alt="Photo of {{item.documentType}}">
+
+                            <div class="info">
+                                <h2>{{item.documentType}}</h2>
+                                <h3>Document No# : {{item.documentNumber}}</h3>
+                                <h3>Name : {{item.firstName}}</h3>
+                                <h3>Valid From : {{item.validFrom | date:'yyyy-MM-dd'}}</h3>
+                                <h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Valid Till : {{item.validTill | date:'yyyy-MM-dd'}}</h3>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/app/quiz-controller.js")
+}
